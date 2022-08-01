@@ -6,29 +6,22 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:49:48 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/01 12:37:32 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/01 16:49:09 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "../inc/keydef.h"
 #include "../inc/fractol.h"
 
-typedef struct	s_data
-{
-	void	*mlx;
-	void	*win;
-}				t_data;
-
-int	free_window(t_data *var)
-{
-	free(var->mlx);
-	free(var->win);
-	return (0);
-}
 int	close_win(t_data *var)
 {
-	free_window(var);
+	if(var->mlx)
+	{
+		free(var->mlx);
+	}
+	if(var->win)
+	{
+		free(var->win);
+	}
 	mlx_destroy_window(var->mlx, var->win);
 	return (0);
 }
