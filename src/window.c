@@ -6,14 +6,15 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:49:48 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/01 16:49:09 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/02 16:51:46 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 int	close_win(t_data *var)
 {
+	
 	if(var->mlx)
 	{
 		free(var->mlx);
@@ -22,6 +23,8 @@ int	close_win(t_data *var)
 	{
 		free(var->win);
 	}
+	mlx_destroy_image(var->mlx, var->img);
+	mlx_clear_window(var->mlx, var->win);
 	mlx_destroy_window(var->mlx, var->win);
 	return (0);
 }
@@ -36,12 +39,3 @@ int key_check(int keycode, t_data *var)
     return (0);
 }
 
-int main()
-{
-	t_data	var;
-	
-	var.mlx = mlx_init();
-	var.win = mlx_new_window(var.mlx, 1000, 1000, ":)");
-	mlx_hook(var.win, 2, 1L<<0, key_check, &var);
-	mlx_loop(var.mlx);
-}

@@ -5,15 +5,17 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 SOURCE_PATH = src/
-SOURCES = window.c
-SRCS = $(SOURCE_PATH)$(SOURCES)
+SOURCES = window.c img.c main.c
+SRCS = $(addprefix $(SOURCE_PATH), $(SOURCES))
+
+INCLUDES = ./inc
 
 LIBRARY = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
 MINILIBX = mlx
 
 all:
 	make -s -C $(MINILIBX)
-	$(CC) $(FLAGS) $(SRCS)  $(LIBRARY) -o $(NAME)
+	$(CC) $(FLAGS) $(SRCS) -I $(INCLUDES) $(LIBRARY) -o $(NAME)
 
 clean:
 
