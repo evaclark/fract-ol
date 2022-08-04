@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:21:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/02 15:31:18 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/04 17:13:35 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include "mlx.h"
 # include "keydef.h"
 
+# define MAX_ITERATIONS 80
+# define WIDTH 1200
+# define HEIGHT 1200
+
 typedef struct	s_data
 {
 	void	*mlx;
@@ -28,6 +32,12 @@ typedef struct	s_data
 	int		line_size;
 	int		endian;
 	char	*addr;
+	double	min_r;
+	double	min_i;
+	double	max_r;
+	double	max_i;
+	double	zr;
+	double	zi;
 }				t_data;
 
 /*window*/
@@ -36,4 +46,6 @@ int	key_check(int keycode, t_data *var);
 /*image*/
 void	my_mlx_pixel_put(t_data *data, int x, int y, int colour);
 
+/*fractol*/
+void	draw_fractal(t_data *var);
 #endif

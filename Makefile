@@ -5,7 +5,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 SOURCE_PATH = src/
-SOURCES = window.c img.c main.c
+SOURCES = window.c img.c main.c fractol.c
 SRCS = $(addprefix $(SOURCE_PATH), $(SOURCES))
 
 INCLUDES = ./inc

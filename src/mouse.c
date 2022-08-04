@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keydef.h                                           :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 15:36:26 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/03 14:33:03 by eclark           ###   ########.fr       */
+/*   Created: 2022/08/03 14:22:24 by eclark            #+#    #+#             */
+/*   Updated: 2022/08/03 14:25:27 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYDEF_H
-# define KEYDEF_H
+#include "fractol.h"
 
-#define KEY_ESC 53
-#define MOUSE_WHEEL_UP 4
-#define MOUSE_WHEEL_DOWN 5
-
-#endif
+void	mouse_hook(int keycode, t_data *var)
+{
+	
+}
