@@ -20,8 +20,8 @@
 # include "keydef.h"
 
 # define MAX_ITERATIONS 80
-# define WIDTH 1200
-# define HEIGHT 1200
+# define WIDTH 900
+# define HEIGHT 900
 
 typedef struct	s_data
 {

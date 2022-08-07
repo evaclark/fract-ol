@@ -12,20 +12,26 @@
 
 #include "fractol.h"
 
-int	close_win(t_data *var)
+int	close_win(t_data *var, int exit_code)
 {
-	
-	if(var->mlx)
+	if (!var)
+	{
+		exit(exit_code);
+	}
+	if (var->img)
+	{
+		mlx_destroy_image(var->mlx, var->img);
+	}
+	if (var->mlx && var->win)
+	{
+		mlx_clear_window(var->mlx, var->win);
+		mlx_destroy_window(var->mlx, var->win);
+	}
+	if (var->mlx)
 	{
 		free(var->mlx);
 	}
-	if(var->win)
-	{
-		free(var->win);
-	}
-	mlx_destroy_image(var->mlx, var->img);
-	mlx_clear_window(var->mlx, var->win);
-	mlx_destroy_window(var->mlx, var->win);
+	exit(exit_code);
 	return (0);
 }
 
@@ -33,7 +39,7 @@ int key_check(int keycode, t_data *var)
 {
     if (keycode == KEY_ESC)
     {
-        close_win(var);
+        close_win(var, 0);
         return (0);
     }
     return (0);
