@@ -1,6 +1,6 @@
 # fract-ol
 
-Fractol steps
+Fractol steps remaining...
 
 - Fix Julia Set - check it prints properly
 
