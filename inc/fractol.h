@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:21:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/04 17:13:35 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/08 16:59:37 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct	s_data
 	double	max_i;
 	double	zr;
 	double	zi;
+	double	ki;
+	double	kr;
+	double	zoom;
 }				t_data;
 
 /*window*/
@@ -47,5 +50,10 @@ int	key_check(int keycode, t_data *var);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int colour);
 
 /*fractol*/
-void	draw_fractal(t_data *var);
+char	*fractal_checker(int n, t_data *var);
+void	Mandelbrot(double ci, double cr);
+void	Julia(t_data *var, double zi, double zr);
+
+/*mouse*/
+int	mouse_hook(int keycode, t_data *z);
 #endif

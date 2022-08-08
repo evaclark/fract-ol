@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   Mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 14:33:33 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/04 17:19:03 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/08 16:54:40 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,47 +17,63 @@
  * z is the critical point 0 which increases by 1 each iteration. Zn must
  * remain bounded for all n > 0. */
 
-void	mandelbrot(t_data *var, int x, int y, double ci, double cr)
+void	Mandelbrot(double ci, double cr)
 {
 	int 	i;
 	int		in_set;
 	double	temp;
+	double	zr;
+	double	zi;
 
 	i = -1;
-	var->zr = 0;
-	var->zi = 0;
+	zr = 0;
+	zi = 0;
 	in_set = 1;
 	while (++i < MAX_ITERATIONS)
 	{
-		if ((var->zr * var->zr + var->zi * var->zi) > 4.0)
+		if (((zr * zr) + (zi * zi)) > 4.0)
 		{
 			in_set = 0;
 			break;
 		}
-		temp = 2 * var->zr * var->zi + ci;
-		var->zr = var->zr * var->zr - var->zi * var->zi + cr;
-		var->zi = temp;
+		temp = 2 * (zr * zi) + ci;
+		zr = (zr * zr) - (zi * zi) + cr;
+		zi = temp;
 	}
-	if (in_set == 1)
-		my_mlx_pixel_put(var, y, x, 0xFFA500);
 }
 
+/*
 void	draw_fractal(t_data *var)
 {
 	int		x;
 	int		y;
-	double	cr;
-	double	ci;
+	double	pr;
+	double	pi;
 
 	y = -1;
-	while (++y < 1000)
+	while (++y < HEIGHT)
 	{
 		x = -1;
-		while (++x < 1000)
+		while (++x < WIDTH)
 		{
-			cr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
-			ci = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
-			mandelbrot(var, x, y, cr, ci);
+			pr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
+			pi = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
+			mandelbrot(var, x, y, pr, pi);
 		}
 	}
 }
+
+int main()
+{
+	t_data	m;
+	m.min_r = -2.0;
+	m.min_i = -1.5;
+	m.max_r = 1.0;
+	m.max_i = m.min_i + (m.max_r - m.min_r) * HEIGHT/WIDTH;
+
+	m.mlx = mlx_init();
+	m.win = mlx_new_window(m.mlx, WIDTH, HEIGHT, "Mandelbrot");
+	draw_fractal(&m);
+	mlx_loop(m.mlx);
+}
+*/
