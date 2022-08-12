@@ -6,18 +6,37 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:46:10 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/08 16:57:46 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/12 12:49:39 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+void	colour(t_data *var, int x, int y)
+{
+	int	pixel;
+	int	colour;
+	
+	colour = 0xFF0000;
+	if (var->bits_pp != 32)
+		colour = mlx_get_color_value(var->mlx, colour);
+	while (x < 900 && y < 900)
+	{	
+		pixel = (y * var->line_size) + (x * 4);
+		var->addr[pixel + 0] = colour & 0xFF;
+		var->addr[pixel + 1] = (colour >> 8) & 0xFF;
+		var->addr[pixel + 2] = (colour >> 16) & 0xFF;
+		var->addr[pixel + 3] = (colour >> 24);
+	}
+}
+
 void    draw_Mandelbrot(t_data *var)
 {
 	int		x;
-    int		y;
-    double	cr;
-    double	ci;
+	int		y;
+	int		n;
+	double	cr;
+	double	ci;
 
 	mlx_clear_window(var->mlx, var->win);	
 	y = -1;
@@ -28,7 +47,9 @@ void    draw_Mandelbrot(t_data *var)
 		{
 			cr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
 			ci = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
-			Mandelbrot(cr, ci);
+			n = Mandelbrot(cr, ci);
+			if (n > 70)
+				colour(var, x, y);
 		}
 	}
 	mlx_put_image_to_window(var->mlx, var->win, var->img, x, y);

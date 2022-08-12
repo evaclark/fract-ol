@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:21:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/08 16:59:37 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/12 11:58:14 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int colour);
 
 /*fractol*/
 char	*fractal_checker(int n, t_data *var);
-void	Mandelbrot(double ci, double cr);
+int		Mandelbrot(double ci, double cr);
 void	Julia(t_data *var, double zi, double zr);
 
 /*mouse*/
