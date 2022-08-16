@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:21:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/12 11:58:14 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/16 14:54:06 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ typedef struct	s_data
 	int		bits_pp;
 	int		line_size;
 	int		endian;
+	int		*data;
 	char	*addr;
+	char	*buff;
 	double	min_r;
 	double	min_i;
 	double	max_r;

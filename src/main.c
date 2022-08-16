@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 14:34:49 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/12 11:25:32 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/15 15:48:36 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main()
 	var.min_i = -1.5;
 	var.max_r = 1.0;
 	var.max_i = var.min_i + (var.max_r + var.min_r) * HEIGHT / WIDTH;
-
-    var.mlx = mlx_init();
+    
+	var.mlx = mlx_init();
     var.win = mlx_new_window(var.mlx, WIDTH, HEIGHT, ":)");
 	var.img = mlx_new_image(var.mlx, WIDTH, HEIGHT);
 	var.addr = mlx_get_data_addr(var.img, &var.bits_pp, &var.line_size, &var.endian);
