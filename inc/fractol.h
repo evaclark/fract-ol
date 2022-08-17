@@ -19,7 +19,7 @@
 # include "mlx.h"
 # include "keydef.h"
 
-# define MAX_ITERATIONS 80
+# define MAX_ITERATIONS 50
 # define WIDTH 900
 # define HEIGHT 900
 

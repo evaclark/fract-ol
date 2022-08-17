@@ -14,14 +14,12 @@
 
 /*include function for different values of ki and kr*/
 
-void    Julia(t_data *var, int x, int y, double zi, double zr)
+void    Julia(t_data *var, int x, int y, double zr, double zi)
 {
     int     i;
     double  temp;
 
     i = -1;
-    zr = 0;
-    zi = 0;
     while (++i < MAX_ITERATIONS)
     {
         if (((zr * zr) + (zi * zi)) > 4.0)

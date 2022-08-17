@@ -50,10 +50,10 @@ void    draw_Mandelbrot(t_data *var)
 
 void    draw_Julia(t_data *var)
 {
-	int		x;
-    int		y;
-    double	cr;
-    double	ci;
+	int	x;
+    	int	y;
+    	double	cr;
+    	double	ci;
 
 	mlx_clear_window(var->mlx, var->win);	
 	y = -1;

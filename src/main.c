@@ -16,8 +16,8 @@ int main()
 {
     t_data  var;
 	
-	var.ki = -0.766667;
-	var.kr = -0.090000;
+	var.ki = -0.7;
+	var.kr = 0.27015;
 	var.min_r = -2.0;
 	var.min_i = -1.5;
 	var.max_r = 1.0;
