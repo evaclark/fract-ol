@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:38:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/16 15:33:00 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/17 14:50:55 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 void	window(t_data *f)
 {
-	int x;
-	int	y;
-
+	int 	x;
+	int		y;
+	double	cr;
+	double	ci;
+	
+	mlx_clear_window(f->mlx, f->win);
 	y = -1;
 	while (++y < HEIGHT)
 	{
 		x = -1;
 		while (++x < WIDTH)
 		{
-			Mandelbrot(		
+			cr = f->min_r + (double)x * (f->max_r - f->min_r) / WIDTH;
+			ci = f->min_i + (double)y * (f->max_i - f->min_i) / HEIGHT;
+			Mandelbrot(f, x, y, cr, ci);
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
@@ -32,11 +37,17 @@ void	window(t_data *f)
 int main()
 {
 	t_data f;
+	f.min_r = -2.0;
+	f.min_i = -1.5;
+	f.max_r = 1.0;
+	f.max_i = f.min_i + (f.max_r - f.min_r) * HEIGHT/WIDTH;
 
 	f.mlx = mlx_init();
 	f.win = mlx_new_window(f.mlx, WIDTH, HEIGHT, "test");
 	f.img = mlx_new_image(f.mlx, WIDTH, HEIGHT);
 	f.data = (int *)mlx_get_data_addr(f.img, &f.bits_pp, &f.line_size, &f.endian);
 	window(&f);
+	mlx_mouse_hook(f.win, mouse_hook, &f);
+	mlx_hook(f.win, 2, 1L<<0, key_check, &f);
 	mlx_loop(f.mlx);
 }

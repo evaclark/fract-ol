@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:46:10 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/15 15:36:19 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/17 15:16:15 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void    draw_Mandelbrot(t_data *var)
 		{
 			cr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
 			ci = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
-			Mandelbrot(cr, ci);
-			my_mlx_pixel_put(var, x, y, 0x345678);
+			Mandelbrot(var, x, y, cr, ci);
 		}
 	}
+	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 }
 
 void    draw_Julia(t_data *var)
@@ -57,20 +57,20 @@ void    draw_Julia(t_data *var)
 
 	mlx_clear_window(var->mlx, var->win);	
 	y = -1;
-	while (++y < 1000)
+	while (++y < HEIGHT)
 	{
 		x = -1;
-		while (++x < 1000)
+		while (++x < WIDTH)
 		{
 			cr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
 			ci = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
-			Julia(var, cr, ci);
+			Julia(var, x, y, cr, ci);
 		}
 	}
-	mlx_put_image_to_window(var->mlx, var->win, var->img, x, y);
+	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 }
 
-char *fractal_checker(int n, t_data *var)
+char	*fractal_checker(int n, t_data *var)
 {
     if (n == 1)
     {

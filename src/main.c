@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 14:34:49 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/15 15:48:36 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/17 15:17:31 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int main()
 	var.mlx = mlx_init();
     var.win = mlx_new_window(var.mlx, WIDTH, HEIGHT, ":)");
 	var.img = mlx_new_image(var.mlx, WIDTH, HEIGHT);
-	var.addr = mlx_get_data_addr(var.img, &var.bits_pp, &var.line_size, &var.endian);
-	fractal_checker(1, &var);
-	mlx_mouse_hook(var.win, mouse_hook, &var);
+	var.data = (int *)mlx_get_data_addr(var.img, &var.bits_pp, &var.line_size, &var.endian);
+	fractal_checker(2, &var);
 	mlx_hook(var.win, 2, 1L<<0, key_check, &var);
     mlx_loop(var.mlx);
 }
