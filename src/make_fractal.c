@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:46:10 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 13:49:31 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 16:53:06 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,17 @@ void	fractal_checker(int n, t_data *var)
 {
     if (n == 1)
     {
-        window(var);
+        init_mandel(var);
+		window(var);
     }
     else if (n == 2)
     {
+		init_julia(var);
         draw_Julia(var);
     }
     else
     {
-        close_win(var, 0);
 		ft_printf("%s\n", "ERROR! Please input 1 for Mandelbrot or 2 for Julia");
-    }
+    	close_win(var, 0);
+	}
 }

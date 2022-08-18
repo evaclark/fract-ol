@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:38:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 15:25:40 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 16:55:21 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ int main(int argc, char **argv)
 	t_data f;
 	f.kr = -0.766667;
 	f.ki = -0.090000;
-	f.min_r = -2.0;
-	f.min_i = -1.5;
-	f.max_r = 1.0;
-	f.max_i = f.min_i + (f.max_r - f.min_r) * HEIGHT/WIDTH;
 
 	f.mlx = mlx_init();
 	f.win = mlx_new_window(f.mlx, WIDTH, HEIGHT, "test");

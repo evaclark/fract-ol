@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:21:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 13:50:42 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 16:56:19 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ typedef struct	s_data
 	int		line_size;
 	int		endian;
 	int		*data;
-	char	*addr;
-	char	*buff;
 	double	min_r;
 	double	min_i;
 	double	max_r;
@@ -58,6 +56,8 @@ void	window(t_data *f);
 
 /*utils*/
 int	ft_atoi(const char *str);
+void	init_mandel(t_data *m);
+void	init_julia(t_data *j);
 
 /*mouse*/
 int	mouse_hook(int keycode, t_data *z);
