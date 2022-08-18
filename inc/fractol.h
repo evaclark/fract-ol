@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:21:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/17 15:04:29 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 13:50:42 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include "ft_printf.h"
 # include "mlx.h"
 # include "keydef.h"
 
-# define MAX_ITERATIONS 50
+# define MAX_ITERATIONS 90
 # define WIDTH 900
 # define HEIGHT 900
 
@@ -47,14 +48,16 @@ typedef struct	s_data
 
 /*window*/
 int	key_check(int keycode, t_data *var);
-
-/*image*/
-void	my_mlx_pixel_put(t_data *data, int x, int y, int colour);
+int	close_win(t_data *var, int exit_code);
 
 /*fractol*/
-char	*fractal_checker(int n, t_data *var);
-void	Mandelbrot(t_data *f, int x, int y, double ci, double cr);
-void	Julia(t_data *var, int x, int y, double zi, double zr);
+void	fractal_checker(int n, t_data *var);
+void	Mandelbrot(t_data *f, int x, int y, double cr, double ci);
+void	Julia(t_data *var, int x, int y, double zr, double zi);
+void	window(t_data *f);
+
+/*utils*/
+int	ft_atoi(const char *str);
 
 /*mouse*/
 int	mouse_hook(int keycode, t_data *z);

@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 14:33:33 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/17 14:38:43 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 13:16:22 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
  * z is the critical point 0 which increases by 1 each iteration. Zn must
  * remain bounded for all n > 0. */
 
-void	Mandelbrot(t_data *f, int x, int y, double ci, double cr)
+void	Mandelbrot(t_data *f, int x, int y, double cr, double ci)
 {
 	int 	i;
-	int		in_set;
 	double	temp;
 	double	zr;
 	double	zi;
@@ -28,13 +27,11 @@ void	Mandelbrot(t_data *f, int x, int y, double ci, double cr)
 	i = -1;
 	zr = 0;
 	zi = 0;
-	in_set = 1;
 	while (++i < MAX_ITERATIONS)
 	{
 		if (((zr * zr) + (zi * zi)) > 4.0)
 		{
-			in_set = 0;
-			break;
+			break ;
 		}
 		temp = 2 * (zr * zi) + ci;
 		zr = (zr * zr) - (zi * zi) + cr;

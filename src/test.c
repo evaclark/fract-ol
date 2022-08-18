@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:38:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/17 14:50:55 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 13:45:39 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	window(t_data *f)
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	t_data f;
+	f.kr = -0.766667;
+	f.ki = -0.090000;
 	f.min_r = -2.0;
 	f.min_i = -1.5;
 	f.max_r = 1.0;
@@ -46,7 +48,8 @@ int main()
 	f.win = mlx_new_window(f.mlx, WIDTH, HEIGHT, "test");
 	f.img = mlx_new_image(f.mlx, WIDTH, HEIGHT);
 	f.data = (int *)mlx_get_data_addr(f.img, &f.bits_pp, &f.line_size, &f.endian);
-	window(&f);
+	if (argc == 2)
+		fractal_checker(ft_atoi(argv[1]), &f);
 	mlx_mouse_hook(f.win, mouse_hook, &f);
 	mlx_hook(f.win, 2, 1L<<0, key_check, &f);
 	mlx_loop(f.mlx);

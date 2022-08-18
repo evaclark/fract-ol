@@ -5,17 +5,20 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 SOURCE_PATH = src/
-SOURCES = make_fractal.c window.c img.c main.c Julia.c Mandelbrot.c mouse.c
+SOURCES = make_fractal.c utils.c window.c test.c Julia.c Mandelbrot.c mouse.c
 SRCS = $(addprefix $(SOURCE_PATH), $(SOURCES))
 
 INCLUDES = ./inc
 
-LIBRARY = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
+PRINTFLIB = -Lft_printf -lftprintf -Ift_printf
+
+MLXLIBRARY = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
 MINILIBX = mlx
 
 all:
+	make -s -C ft_printf
 	make -s -C $(MINILIBX)
-	$(CC) $(FLAGS) $(SRCS) -I $(INCLUDES) $(LIBRARY) -o $(NAME)
+	$(CC) $(FLAGS) $(SRCS) -I $(INCLUDES) $(PRINTFLIB) $(MLXLIBRARY) -o $(NAME)
 
 clean:
 

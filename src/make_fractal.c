@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:46:10 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/17 15:16:15 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 13:49:31 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,6 @@
 	var->buff[pixel + 2] = (colour >> 16) & 0xFF;
 	var->buff[pixel + 3] = (colour >> 24);
 }*/
-
-void    draw_Mandelbrot(t_data *var)
-{
-	int		x;
-	int		y;
-	double	cr;
-	double	ci;
-
-	mlx_clear_window(var->mlx, var->win);	
-	y = -1;
-	while (++y < HEIGHT)
-	{
-		x = -1;
-		while (++x < WIDTH)
-		{
-			cr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
-			ci = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
-			Mandelbrot(var, x, y, cr, ci);
-		}
-	}
-	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
-}
 
 void    draw_Julia(t_data *var)
 {
@@ -70,11 +48,11 @@ void    draw_Julia(t_data *var)
 	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 }
 
-char	*fractal_checker(int n, t_data *var)
+void	fractal_checker(int n, t_data *var)
 {
     if (n == 1)
     {
-        draw_Mandelbrot(var);
+        window(var);
     }
     else if (n == 2)
     {
@@ -82,7 +60,7 @@ char	*fractal_checker(int n, t_data *var)
     }
     else
     {
-        return ("ERROR please input 1 for Mandelbrot or 2 for Julia");
+        close_win(var, 0);
+		ft_printf("%s\n", "ERROR! Please input 1 for Mandelbrot or 2 for Julia");
     }
-	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 14:34:49 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/17 15:17:31 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 13:12:27 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int main()
+int main(int argc, char **argv)
 {
     t_data  var;
 	
@@ -27,7 +27,8 @@ int main()
     var.win = mlx_new_window(var.mlx, WIDTH, HEIGHT, ":)");
 	var.img = mlx_new_image(var.mlx, WIDTH, HEIGHT);
 	var.data = (int *)mlx_get_data_addr(var.img, &var.bits_pp, &var.line_size, &var.endian);
-	fractal_checker(2, &var);
+	if (argc == 2)
+		fractal_checker(ft_atoi(argv[1]), &var);
 	mlx_hook(var.win, 2, 1L<<0, key_check, &var);
     mlx_loop(var.mlx);
 }
