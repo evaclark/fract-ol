@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:38:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 13:45:39 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 15:25:40 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int main(int argc, char **argv)
 	if (argc == 2)
 		fractal_checker(ft_atoi(argv[1]), &f);
 	mlx_mouse_hook(f.win, mouse_hook, &f);
+	mlx_hook(f.win, 17, 0L, close_win, &f);
 	mlx_hook(f.win, 2, 1L<<0, key_check, &f);
 	mlx_loop(f.mlx);
 }

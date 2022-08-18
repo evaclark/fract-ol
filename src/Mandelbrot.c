@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 14:33:33 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 13:16:22 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 15:07:47 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,43 +38,13 @@ void	Mandelbrot(t_data *f, int x, int y, double cr, double ci)
 		zi = temp;
 	}
 	if(i == MAX_ITERATIONS)
-		f->data[y * WIDTH + x] = 0x54FF82;
+		f->data[y * WIDTH + x] = 0xFEFBD8;
+	else if (i >= 20 && i < MAX_ITERATIONS)
+		f->data[y * WIDTH + x] = 0x80CED6;
+	else if (i >= 15 && i < 20)
+		f->data[y * WIDTH + x] = 0x82B74B;
+	else if (i >= 12 && i < 15)
+		f->data[y * WIDTH + x] = 0xD6CBD3;
 	else
-		f->data[y * WIDTH + x] = 0xFFFFFF;
+		f->data[y * WIDTH + x] = 0x618685;
 }
-
-/*
-void	draw_fractal(t_data *var)
-{
-	int		x;
-	int		y;
-	double	pr;
-	double	pi;
-
-	y = -1;
-	while (++y < HEIGHT)
-	{
-		x = -1;
-		while (++x < WIDTH)
-		{
-			pr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
-			pi = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
-			mandelbrot(var, x, y, pr, pi);
-		}
-	}
-}
-
-int main()
-{
-	t_data	m;
-	m.min_r = -2.0;
-	m.min_i = -1.5;
-	m.max_r = 1.0;
-	m.max_i = m.min_i + (m.max_r - m.min_r) * HEIGHT/WIDTH;
-
-	m.mlx = mlx_init();
-	m.win = mlx_new_window(m.mlx, WIDTH, HEIGHT, "Mandelbrot");
-	draw_fractal(&m);
-	mlx_loop(m.mlx);
-}
-*/

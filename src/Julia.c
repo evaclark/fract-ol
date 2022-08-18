@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:14:30 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 12:59:22 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/18 14:50:32 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void    Julia(t_data *var, int x, int y, double zr, double zi)
         zi = temp;
     }
 	if (i == MAX_ITERATIONS)
-		var->data[y * WIDTH + x] = 0xDC2104;
+		var->data[y * WIDTH + x] = 0xC70039;
+	else if (i >= 70 && i < MAX_ITERATIONS)
+		var->data[y * WIDTH + x] = 0xFF5733;
+	else if (i >= 60 && i < 70)
+		var->data[y * WIDTH + x] = 0xFFC300;
 	else
-		var->data[y * WIDTH + x] = 0xFFFFFF;
+		var->data[y * WIDTH + x] = 0xDAF7A6;
 }
