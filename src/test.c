@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:38:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 16:55:21 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/22 10:31:21 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,11 @@ void	window(t_data *f)
 
 int main(int argc, char **argv)
 {
-	t_data f;
-	f.kr = -0.766667;
-	f.ki = -0.090000;
-
-	f.mlx = mlx_init();
-	f.win = mlx_new_window(f.mlx, WIDTH, HEIGHT, "test");
-	f.img = mlx_new_image(f.mlx, WIDTH, HEIGHT);
-	f.data = (int *)mlx_get_data_addr(f.img, &f.bits_pp, &f.line_size, &f.endian);
-	if (argc == 2)
-		fractal_checker(ft_atoi(argv[1]), &f);
-	mlx_mouse_hook(f.win, mouse_hook, &f);
-	mlx_hook(f.win, 17, 0L, close_win, &f);
-	mlx_hook(f.win, 2, 1L<<0, key_check, &f);
-	mlx_loop(f.mlx);
+	if (argc == 2 || argc == 4)
+		fractal_checker(ft_atoi(argv[1]));
+	else
+	{
+		ft_printf("%s\n", "no");
+	}
+	return (0);
 }

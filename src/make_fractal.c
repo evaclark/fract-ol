@@ -26,7 +26,7 @@
 	var->buff[pixel + 3] = (colour >> 24);
 }*/
 
-void    draw_Julia(t_data *var)
+void    draw(t_data *var, int n)
 {
 	int	x;
     	int	y;
@@ -42,27 +42,23 @@ void    draw_Julia(t_data *var)
 		{
 			cr = var->min_r + (double)x * (var->max_r - var->min_r) / WIDTH;
 			ci = var->min_i + (double)y * (var->max_i - var->min_i) / HEIGHT;
-			Julia(var, x, y, cr, ci);
+			if (n == 2)
+				Julia(var, x, y, cr, ci);
+			else if (n == 1)
+				Mandelbrot(var, x, y, cr, ci);
 		}
 	}
 	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 }
 
-void	fractal_checker(int n, t_data *var)
-{
-    if (n == 1)
-    {
-        init_mandel(var);
-		window(var);
+void	fractal_checker(int n)
+{  
+	if (n == 1)
+	{
+    	init_mandel(n);
     }
     else if (n == 2)
     {
-		init_julia(var);
-        draw_Julia(var);
-    }
-    else
-    {
-		ft_printf("%s\n", "ERROR! Please input 1 for Mandelbrot or 2 for Julia");
-    	close_win(var, 0);
+		init_julia(n);
 	}
 }
