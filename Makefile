@@ -5,8 +5,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 SOURCE_PATH = src/
-SOURCES = init.c make_fractal.c utils.c window.c test.c Julia.c Mandelbrot.c \
-		  mouse.c
+SOURCES = init.c make_fractal.c utils.c window.c test.c Julia.c Mandelbrot.c mouse.c
 SRCS = $(addprefix $(SOURCE_PATH), $(SOURCES))
 
 INCLUDES = ./inc

@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 14:33:33 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/18 15:07:47 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/26 01:18:39 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,6 @@ void	Mandelbrot(t_data *f, int x, int y, double cr, double ci)
 		zr = (zr * zr) - (zi * zi) + cr;
 		zi = temp;
 	}
-	if(i == MAX_ITERATIONS)
-		f->data[y * WIDTH + x] = 0xFEFBD8;
-	else if (i >= 20 && i < MAX_ITERATIONS)
-		f->data[y * WIDTH + x] = 0x80CED6;
-	else if (i >= 15 && i < 20)
-		f->data[y * WIDTH + x] = 0x82B74B;
-	else if (i >= 12 && i < 15)
-		f->data[y * WIDTH + x] = 0xD6CBD3;
-	else
-		f->data[y * WIDTH + x] = 0x618685;
+	f->data[y * WIDTH + x]= i == MAX_ITERATIONS ? 0 : i * 50 + 11278615;
 }
+/*11278615 is decimal conversion of 0xAC1917 - a red*/

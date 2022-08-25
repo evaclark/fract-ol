@@ -12,28 +12,13 @@
 
 #include "fractol.h"
 
-/*void	colour(t_data *var, int x, int y)
-{
-	int	pixel;
-	int	colour;
-	
-	colour = 0xFF660000;
-	pixel = (y * var->line_size) + (x * 4);
-	
-	var->buff[pixel + 0] = colour & 0xFF;
-	var->buff[pixel + 1] = (colour >> 8) & 0xFF;
-	var->buff[pixel + 2] = (colour >> 16) & 0xFF;
-	var->buff[pixel + 3] = (colour >> 24);
-}*/
-
 void    draw(t_data *var, int n)
 {
-	int	x;
-    	int	y;
-    	double	cr;
-    	double	ci;
-
-	mlx_clear_window(var->mlx, var->win);	
+		int	x;
+		int	y;
+		double	cr;
+		double	ci;
+	
 	y = -1;
 	while (++y < HEIGHT)
 	{
@@ -51,14 +36,23 @@ void    draw(t_data *var, int n)
 	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 }
 
-void	fractal_checker(int n)
+void	fractal_checker(t_data *f, int argc, char **argv)
 {  
-	if (n == 1)
+	if (argc < 2)
 	{
-    	init_mandel(n);
-    }
-    else if (n == 2)
-    {
-		init_julia(n);
+		ft_printf("%s\n", "Input 1 for Mandelbrot, 2 for Julia");
+		close_win(f, 0);
 	}
+	else if (ft_atoi(argv[1]) == 1 && argc == 2)
+	{
+		init_mandel(f);
+		f->n = 1;
+	}
+	else if (ft_atoi(argv[1]) == 2 && argc == 4)
+	{
+		init_julia(f, argv);
+		f->n = 2;
+	}
+	else
+		ft_printf("%s\n", "Input 1 for Mandelbrot, 2 for Julia");
 }

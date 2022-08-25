@@ -6,37 +6,38 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 14:22:24 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/22 10:57:47 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/26 01:18:42 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	zoom(double zoom, t_data *f)
+int	mouse_hook(int keycode, int x, int y, t_data *var)
 {
-	
 	double	center_r;
 	double	center_i;
-
-	center_r = f->min_r - f->max_r;
-	center_i = f->max_i - f->min_i;
-	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
-	f->min_r = f->max_r + zoom * center_r;
-	f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
-	f->max_i = f->min_i + zoom * center_i;
-}
-
-int	mouse_hook(int keycode, t_data *z)
-{
+	
+	center_r = var->min_r - var->max_r;
+	center_i = var->max_i - var->min_i;
 	if (keycode == MOUSE_WHEEL_UP)
 	{
-		zoom(0.3, z);
-		draw(z, z->n);
-	}
-	else if (keycode == MOUSE_WHEEL_DOWN)
+		x =0;
+		y = 0;
+		var->max_r = var->max_r + (center_r - 0.7 * center_r) / 2;
+		var->min_r = var->max_r + 0.7 * center_r;
+		var->min_i = var->min_i + (center_i - 0.7 * center_i) / 2;
+		var->max_i = var->min_i + 0.7 * center_i;
+		mlx_clear_window(var->mlx, var->win);
+		draw(var, var->n);
+	}	
+	if (keycode == MOUSE_WHEEL_DOWN)
 	{
-		zoom(1.03, z);
-		draw(z, z->n);
+		var->max_r = var->max_r + (center_r - 1.3 * center_r) / 2;
+		var->min_r = var->max_r + 1.3 * center_r;
+		var->min_i = var->min_i + (center_i - 1.3 * center_i) / 2;
+		var->max_i = var->min_i + 1.3 * center_i;
+		mlx_clear_window(var->mlx, var->win);
+		draw(var, var->n);
 	}
 	return (0);
 }
