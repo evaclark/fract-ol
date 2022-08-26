@@ -6,21 +6,21 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:38:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/26 01:18:30 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/26 14:04:17 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data f;
+	t_data	f;
 
 	init(&f);
 	fractal_checker(&f, argc, argv);
 	draw(&f, f.n);
 	mlx_mouse_hook(f.win, mouse_hook, &f);
-	mlx_hook(f.win, 17, 0L, close_win, (void *)&f);
-	mlx_hook(f.win, 2, 1l<<0, key_check, &f);
+	mlx_hook(f.win, 17, 0, close_win, (void *)&f);
+	mlx_hook(f.win, 2, 0, key_check, &f);
 	mlx_loop(f.mlx);
 }

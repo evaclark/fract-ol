@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 14:33:33 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/26 01:18:39 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/26 14:31:48 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@
  * the Mandelbrot set is generated through iteration - with a constant given
  * z is the critical point 0 which increases by 1 each iteration. Zn must
  * remain bounded for all n > 0. */
-
-void	Mandelbrot(t_data *f, int x, int y, double cr, double ci)
+void	mandelbrot(t_data *m, double cr, double ci)
 {
-	int 	i;
+	int		i;
 	double	temp;
-	double	zr;
-	double	zi;
 
+	m->zr = 0;
+	m->zi = 0;
 	i = -1;
-	zr = 0;
-	zi = 0;
 	while (++i < MAX_ITERATIONS)
 	{
-		if (((zr * zr) + (zi * zi)) > 4.0)
+		if (((m->zr * m->zr) + (m->zi * m->zi)) > 4.0)
 		{
 			break ;
 		}
-		temp = 2 * (zr * zi) + ci;
-		zr = (zr * zr) - (zi * zi) + cr;
-		zi = temp;
+		temp = 2 * (m->zr * m->zi) + ci;
+		m->zr = (m->zr * m->zr) - (m->zi * m->zi) + cr;
+		m->zi = temp;
 	}
-	f->data[y * WIDTH + x]= i == MAX_ITERATIONS ? 0 : i * 50 + 11278615;
+	if (i == MAX_ITERATIONS)
+		m->data[m->y * WIDTH + m->x] = 0;
+	else
+		m->data[m->y * WIDTH + m->x] = i * 50 + 11278615;
 }
 /*11278615 is decimal conversion of 0xAC1917 - a red*/

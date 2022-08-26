@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:49:48 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/26 01:18:45 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/26 12:32:02 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ int	close_win(t_data *var, int exit_code)
 	return (0);
 }
 
-int key_check(int keycode, t_data *var)
+int	key_check(int keycode, t_data *var)
 {
-    double	center_r;
+	double	center_r;
 	double	center_i;
-	
+
 	if (keycode == KEY_ESC)
-    {
-        close_win(var, 0);
-        return (0);
-    }
+	{
+		close_win(var, 0);
+		return (0);
+	}
 	if (keycode == 13)
 	{
 		center_r = var->min_r - var->max_r;
@@ -56,6 +56,5 @@ int key_check(int keycode, t_data *var)
 		mlx_clear_window(var->mlx, var->win);
 		draw(var, var->n);
 	}
-    return (0);
+	return (0);
 }
-
