@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:21:38 by eclark            #+#    #+#             */
-/*   Updated: 2022/08/26 14:24:57 by eclark           ###   ########.fr       */
+/*   Updated: 2022/08/26 15:07:32 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "ft_printf.h"
 # include "mlx.h"
 
-# define MAX_ITERATIONS 80
+# define MAX_ITERATIONS 90
 # define WIDTH 900
 # define HEIGHT 900
 # define KEY_ESC 53
