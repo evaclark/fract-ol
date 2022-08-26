@@ -7,7 +7,11 @@ Examples of Julia Values:
 
 Useful Resources
 https://harm-smits.github.io/42docs/libs/minilibx/events.html
+
 https://www.codequoi.com/en/fract-ol-generating-fractals-in-c/
+
 https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html
+
 https://www.youtube.com/watch?v=FFftmWSzgmk
+
 https://github.com/keuhdall/images_example
